@@ -1,12 +1,12 @@
 ----------------------------------------------------------------------------------
 -- Company: HS-Mannheim
--- Engineer: Matthias Weniger and Jürgen Altszeimer
+-- Engineer: MW and JA
 -- 
 -- Create Date: 19.04.2016 20:33:22
 -- Design Name: 
 -- Module Name: RAM - Behavioral
 -- Project Name: Von Neumann Rechner in VHDL
--- Target Devices: Siumlate on 35µ Process
+-- Target Devices: Siumlate on 35Âµ Process
 -- Tool Versions: 
 -- Description: 
 -- 
