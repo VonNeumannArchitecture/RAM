@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: HS-Mannheim
--- Engineer: Matthias Weniger and Jürgen Altszeimer
+-- Engineer: MW and JA
 -- 
 -- Create Date: 19.04.2016 20:33:22
 -- Design Name: 
