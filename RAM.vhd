@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: HS-Mannheim
--- Engineer: MW and JA
+-- Engineer: Matthias Weniger and Jürgen Altszeimer
 -- 
 -- Create Date: 19.04.2016 20:33:22
 -- Design Name: 
@@ -24,11 +24,10 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -39,36 +38,34 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity RAM is
     Generic (
-          addrwide  : natural := 16; 
+          addrwide  : natural := 16; -- 2^n -> 256 -> n = 8 
           datawide  : natural := 8
           );
-    Port ( clk : in STD_LOGIC;  -- RAM Clock
-           en : in STD_LOGIC;   -- Enable
-           rw : in STD_LOGIC;   -- Read=0/Write=1
+    Port ( clk : in STD_LOGIC;  -- RAM clock
+           en : in STD_LOGIC;   -- enable / chip select
+           rw : in STD_LOGIC;   -- write to memory = 0 / read from memory = 1
            addrbus : in STD_LOGIC_VECTOR (addrwide-1 downto 0);
-           --databus : inout STD_LOGIC_VECTOR (datawide-1 downto 0));
-           databusin : in STD_LOGIC_VECTOR (datawide-1 downto 0));
-           databusout : out STD_LOGIC_VECTOR (datawide-1 downto 0));
+           databus : inout STD_LOGIC_VECTOR (datawide-1 downto 0));
 end RAM;
 
 architecture Behavioral of RAM is
     type memory_type is array(0 to (2**addrwide)-1) of STD_LOGIC_VECTOR(datawide-1 downto 0);
     signal memory : memory_type; 
-type
 
 begin
+
     ram_pro: process (clk) is
     begin
         if rising_edge(clk) then 
-            databusout <= 'Z';
-            if en = '1' thenn 
-                if rw = '1' then -- Write
-                    databusout <= memory(to_integer(unsigned(addrbus)));
-                else    -- Reade
-                     memory(to_integer(unsigned(addrbus))) <= databbusin; 
+            databus <= (others => 'Z');
+            if en = '1' then
+                if rw = '1' then -- read from memory
+                    databus <= memory(to_integer(unsigned(addrbus)));                  
+                else    -- write to memory
+                    memory(to_integer(unsigned(addrbus))) <= databus; 
                 end if; 
             end if; 
         end if; 
     end process ram_pro;
-
+    
 end Behavioral;
