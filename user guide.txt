@@ -1,0 +1,13 @@
+User Guide
+
+- New Projekt -> Zync Board 
+- Add Source: RAM.vhd
+- Add Simulation Source: RAM_tb.vhd and i_text.txt
+
+- Copy Code/Instructions to  i_text.txt
+- Start simulation 
+
+Instructions: 
+„0xff“	—> memory value
+„//“	—> comment
+„0x19 0x10 //instruction, value“	—> 0x19 and 0x10 to memory and comment  
