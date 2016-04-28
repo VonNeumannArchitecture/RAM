@@ -6,7 +6,7 @@
 -- Design Name: 
 -- Module Name: RAM - Behavioral
 -- Project Name: Von Neumann Rechner in VHDL
--- Target Devices: Siumlate on 35Âµ Process
+-- Target Devices: Siumlate on 35µ Process
 -- Tool Versions: 
 -- Description: 
 -- 
@@ -37,10 +37,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 
 entity RAM is
-    Generic (
-          addrwide  : natural := 16; -- 2^n -> 256 -> n = 8 
-          datawide  : natural := 8
-          );
+    Generic (   addrwide  : natural := 16; -- 2^n
+                datawide  : natural := 8);
     Port ( clk : in STD_LOGIC;  -- RAM clock
            en : in STD_LOGIC;   -- enable / chip select
            rw : in STD_LOGIC;   -- write to memory = 0 / read from memory = 1
