@@ -6,7 +6,7 @@
 -- Design Name: 
 -- Module Name: RAM_tb - Behavioral
 -- Project Name: Von Neumann Rechner in VHDL
--- Target Devices:  Siumlate on 35µ Process
+-- Target Devices:  Siumlate on 35Âµ Process
 -- Tool Versions: 
 -- Description: 
 -- 
@@ -103,7 +103,7 @@ begin
                 when reset =>   -- set dfoult values 
                     addrbus <= (others => '0');
                     databus <= (others => '0'); 
-                    en <= '0';
+                    en <= '1';
                     rw <= '0';
                     init <= fill_mem_1;
                     
@@ -137,11 +137,11 @@ begin
                 when fill_mem_4 =>  -- read hex number
                     hread(read_line, read_vec);
                     databus <= read_vec;
-                    en <= '1';  -- write to memory
+                    en <= '0';  -- write to memory
                     init <= fill_mem_5; 
                                    
                 when fill_mem_5 =>  -- update counter
-                    en <= '0';
+                    en <= '1';
                     addrbus <= addrbus + 1;
                     init <= fill_mem_2; 
                     if addrbus = (addrbus'range => '1') then 
