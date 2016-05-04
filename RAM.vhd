@@ -6,7 +6,7 @@
 -- Design Name: 
 -- Module Name: RAM - Behavioral
 -- Project Name: Von Neumann Rechner in VHDL
--- Target Devices: Siumlate on 35µ Process
+-- Target Devices: Siumlate on 35Âµ Process
 -- Tool Versions: 
 -- Description: 
 -- 
@@ -56,7 +56,7 @@ begin
     begin
         if rising_edge(clk) then 
             databus <= (others => 'Z');
-            if en = '1' then
+            if en = '0' then
                 if rw = '1' then -- read from memory
                     databus <= memory(to_integer(unsigned(addrbus)));                  
                 else    -- write to memory
